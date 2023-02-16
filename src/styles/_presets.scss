@@ -1,0 +1,36 @@
+@use "./variables" as variables;
+
+h1 {
+    color: variables.$titleColor;
+}
+
+p {
+    color: variables.$textColor;
+}
+
+strong {
+    color: variables.$primaryColor;
+}
+
+input {
+    padding: .7rem;
+    border: 1px solid variables.$primaryColor;
+    border-radius: 5px;
+    
+    &::placeholder {
+        color: variables.$textColor;
+        font-weight: 500;
+    }
+
+    &:focus-visible {
+    outline: 2px solid variables.$primaryColor;
+    }
+}
+
+input[type="submit"], button {
+    border: none;
+    background-color: variables.$primaryColor;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+}

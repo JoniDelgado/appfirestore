@@ -1,0 +1,21 @@
+.header {
+    padding: 1rem;
+    background-color: gray;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.userDataContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &__image {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+}
