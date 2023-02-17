@@ -1,0 +1,57 @@
+.backgroundPage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(49,41,63);
+    background: linear-gradient(142deg, rgba(49,41,63,1) 0%, rgba(75,66,101,1) 10%, rgba(85,77,116,1) 47%, rgba(90,82,124,1) 72%, rgba(121,110,168,1) 95%);
+
+}
+
+.animationContanier {
+    padding: 2rem;
+    margin: auto;
+    border: thin solid white;
+    border-radius: 50%;
+
+    &__image {
+        width: 80px;
+        height: 80px;
+        filter: saturate(3)  hue-rotate(3000deg) ;
+        animation: logoAnimation 3s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite alternate;
+    }
+}
+
+@keyframes logoAnimation {
+    0% {
+        transform: rotate(75deg);
+    }
+    
+    20% {
+        transform: rotate(180deg);
+        transform: scale(.4);
+        transform: scale(.5);     
+    }
+
+    40% {
+        transform: rotate(255deg) ;
+
+    }
+
+    60% {
+        transform: rotate(300deg);
+    }
+
+    80%{
+        transform: scale(1.1);
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
