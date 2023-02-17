@@ -85,6 +85,7 @@ const LogForm = ({ type, isLogged }) => {
       />
       {isLogged && (
         <button
+          type="button"
           className={style.googleButton}
           onClick={() => signInWhitGoogle()}
         >
