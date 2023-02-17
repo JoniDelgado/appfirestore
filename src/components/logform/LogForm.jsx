@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { userContext } from "../../context/UserContext";
+import { useEffect, useState } from "react";
 import { logWhitEmail } from "../../firebase/logInUser";
+import { signInWhitGoogle } from "../../firebase/signInGoogle";
 import { singWhitEmail } from "../../firebase/singInUser";
 import style from "./logoForm.module.scss";
 
@@ -11,12 +11,17 @@ const initialValueForm = {
 
 const LogForm = ({ type, isLogged }) => {
   const [formData, setFormData] = useState(initialValueForm);
-
-  const user = useContext(userContext);
+  const [logError, setLogError] = useState(null);
 
   useEffect(() => {
     setFormData(initialValueForm);
   }, [isLogged]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLogError(null);
+    }, 3000);
+  }, [logError]);
 
   const handleChangeForm = (e) => {
     const { name, value } = e.target;
@@ -30,10 +35,18 @@ const LogForm = ({ type, isLogged }) => {
     e.preventDefault();
     const { email, password } = formData;
 
+    function signValidate() {
+      if (!email || !password)
+        return alert("Debe ingresar un email y una contraseña valida");
+      if (password.length < 6)
+        return alert("La contraseña debe tener al menos 6 caracteres");
+    }
+
     if (type === "Registrarse") {
-      singWhitEmail(email, password).then((res) => user.setCurrentUser(res));
+      signValidate();
+      singWhitEmail(email, password);
     } else {
-      logWhitEmail(email, password).then((res) => user.setCurrentUser(res));
+      logWhitEmail(email, password).catch((error) => setLogError(error));
     }
 
     setFormData(initialValueForm);
@@ -60,12 +73,24 @@ const LogForm = ({ type, isLogged }) => {
         placeholder="Contraseña"
         className={style.formContainer__inputs}
       />
+      {logError && (
+        <p className={style.formContainer__errorAdvice}>
+          ¡Oops! Correo o contraseña inválidos.
+        </p>
+      )}
       <input
         type="submit"
         value={type}
         className={style.formContainer__inputs}
       />
-      {isLogged && <button className={style.googleButton}></button>}
+      {isLogged && (
+        <button
+          className={style.googleButton}
+          onClick={() => signInWhitGoogle()}
+        >
+          Acceso con Google
+        </button>
+      )}
     </form>
   );
 };

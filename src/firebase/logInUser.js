@@ -6,6 +6,6 @@ export async function logWhitEmail(email, password) {
     const logUser = await signInWithEmailAndPassword(auth, email, password);
     if (logUser) return logUser.user;
   } catch (error) {
-    console.log("error", error);
+    throw error;
   }
 }

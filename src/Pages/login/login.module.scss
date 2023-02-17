@@ -2,7 +2,7 @@
 
 .loginPageBg, .loginPageBgAccess {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     background-image: url("https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80");
@@ -28,7 +28,7 @@
     backdrop-filter: blur(10px);
     
     @include mixins.for-phone {
-     width: 100%;   
+     width: 90%;   
     }
 }
 
