@@ -6,6 +6,22 @@
     gap: 1rem;
 
 
+    // &__inputs[type="password"]::before
+
+    &__inputs[type="password"], &__inputs[type="email"] {
+        background-image: url("icons/arroba.png");
+        background-size: cover;
+        background-size: 18px;
+        background-repeat: no-repeat;
+        background-position-y:50%;
+        background-position-x: 95%;
+
+        }
+
+    &__inputs[type="password"] {
+        background-image: url("icons/candado.png");
+    }
+
     &__inputs[type="submit"] {
         margin-top: 2rem;
     }
@@ -21,7 +37,7 @@
     background-color: white;
     border: thin solid variables.$primaryColor;
     color: variables.$textColor;
-    background-image: url("public/icons/google.png");
+    background-image: url("icons/goo.png");
     background-size: 25px;
     background-repeat: no-repeat;
     background-position-x: 10px;
