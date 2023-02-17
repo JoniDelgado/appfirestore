@@ -10,9 +10,11 @@ export function CurrentUserContext({ children }) {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) setUserState("logged");
-      else setUserState("unlogged");
-      setCurrentUser(user);
+      setTimeout(() => {
+        if (user) setUserState("logged");
+        else setUserState("unlogged");
+        setCurrentUser(user);
+      }, 3000);
     });
   }, []);
 
