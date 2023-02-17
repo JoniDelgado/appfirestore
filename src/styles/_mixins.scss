@@ -1,0 +1,13 @@
+// mixins media queries
+
+@mixin for-phone{
+    @media screen and (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin for-tablet{
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+        @content;
+    }
+}

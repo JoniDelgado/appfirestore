@@ -6,7 +6,9 @@ const Login = () => {
   const [isLogged, setIsLogged] = useState(true);
 
   return (
-    <main className={style.loginPageBg}>
+    <main
+      className={`${style.loginPageBg} ${isLogged && style.loginPageBg_sign}`}
+    >
       <section className={style.loginContainer}>
         <div className={style.loginHeader}>
           <img

@@ -65,6 +65,7 @@ const LogForm = ({ type, isLogged }) => {
         value={type}
         className={style.formContainer__inputs}
       />
+      {isLogged && <button className={style.googleButton}></button>}
     </form>
   );
 };

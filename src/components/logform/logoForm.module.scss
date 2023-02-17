@@ -8,3 +8,13 @@
         margin-top: 2rem;
     }
 }
+
+.googleButton {
+    padding: .7rem;
+    background-color: white;
+    border: thin solid black;
+    background-image: url("icons/google.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

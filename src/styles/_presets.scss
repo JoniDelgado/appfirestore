@@ -28,6 +28,7 @@ input {
 }
 
 input[type="submit"], button {
+    padding: .7rem;
     border: none;
     background-color: variables.$primaryColor;
     border-radius: 10px;
