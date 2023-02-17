@@ -14,7 +14,7 @@ export function CurrentUserContext({ children }) {
         if (user) setUserState("logged");
         else setUserState("unlogged");
         setCurrentUser(user);
-      }, 3000);
+      }, 1);
     });
   }, []);
 

@@ -18,10 +18,13 @@ const LogForm = ({ type, isLogged }) => {
   }, [isLogged]);
 
   useEffect(() => {
+    if (logError) console.log(logError.error);
     setTimeout(() => {
       setLogError(null);
     }, 3000);
   }, [logError]);
+
+  // Manejo de formulario de inicio de sesión ***
 
   const handleChangeForm = (e) => {
     const { name, value } = e.target;
@@ -44,12 +47,33 @@ const LogForm = ({ type, isLogged }) => {
 
     if (type === "Registrarse") {
       signValidate();
-      singWhitEmail(email, password);
+      singWhitEmail(email, password).catch((error) => handleError(error));
     } else {
-      logWhitEmail(email, password).catch((error) => setLogError(error));
+      logWhitEmail(email, password).catch((error) => handleError(error));
     }
-
     setFormData(initialValueForm);
+  };
+
+  //  Manejo de errores de inicio de sesión ***
+
+  const handleError = (error) => {
+    if (error.includes("wrong-password"))
+      setLogError({
+        error,
+        errorMessage: "¡Oops! Correo o contraseña inválidos.",
+      });
+
+    if (error.includes("email-already-in-use"))
+      setLogError({
+        error,
+        errorMessage: "Ya tenemos un usuario registrado con este mail.",
+      });
+
+    if (error.includes("user-not-found"))
+      setLogError({
+        error,
+        errorMessage: "Mmm... este usuario no está registrado.",
+      });
   };
 
   return (
@@ -73,9 +97,10 @@ const LogForm = ({ type, isLogged }) => {
         placeholder="Contraseña"
         className={style.formContainer__inputs}
       />
+
       {logError && (
         <p className={style.formContainer__errorAdvice}>
-          ¡Oops! Correo o contraseña inválidos.
+          {logError.errorMessage}
         </p>
       )}
       <input
@@ -83,6 +108,7 @@ const LogForm = ({ type, isLogged }) => {
         value={type}
         className={style.formContainer__inputs}
       />
+
       {isLogged && (
         <button
           type="button"

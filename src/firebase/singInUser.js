@@ -6,6 +6,6 @@ export async function singWhitEmail(email, password) {
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     if (newUser) return newUser.user;
   } catch (error) {
-    console.log("este es el error", error);
+    throw error.code;
   }
 }

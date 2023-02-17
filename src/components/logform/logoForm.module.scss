@@ -5,9 +5,6 @@
     flex-direction: column;
     gap: 1rem;
 
-
-    // &__inputs[type="password"]::before
-
     &__inputs[type="password"], &__inputs[type="email"] {
         background-image: url("../../../public/icons/arroba.png");
         background-size: cover;
@@ -27,7 +24,7 @@
     }
 
     &__errorAdvice {
-        color: red;
+        color: variables.$alertColor;
         font-size: .8rem;
     }
 }
