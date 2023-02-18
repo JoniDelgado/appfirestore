@@ -17,17 +17,29 @@ const Layout = () => {
               alt="foto de perfil de usuario"
               className={style.userDataContainer__image}
             />
-            <h4 className={style.userDataContainer__name}>
-              {user.displayName || user.email}
-            </h4>
-            <p className={style.userDataContainer__email}>{user.email}</p>
+            <div className={style.nameAndMailContainer}>
+              <h4 className={style.nameAndMailContainer__name}>
+                {user.displayName || user.email}
+              </h4>
+              <p className={style.nameAndMailContainer__email}>{user.email}</p>
+            </div>
           </div>
 
-          <nav
-            className={style.nav}
+          <div
+            className={style.menuButton}
             onClick={() => setOPenMenu(!openMenu)}
-          ></nav>
-          {openMenu && <button onClick={() => singOut()}>Cerrar Sesión</button>}
+          ></div>
+
+          <nav className={`${style.nav} ${openMenu && style.nav_visible}`}>
+            <img className={style.nav__image} src="logos/logo.png" alt="Logo" />
+            <button className={style.nav__button} onClick={() => singOut()}>
+              Cerrar Sesión
+            </button>
+            <div
+              onClick={() => setOPenMenu(!openMenu)}
+              className={style.nav__arrowButton}
+            ></div>
+          </nav>
         </header>
       ) : null}
       <Outlet />
