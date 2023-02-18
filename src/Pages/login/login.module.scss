@@ -6,15 +6,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("images/logbg.jpg");
+    background-image: url("../../../public/images/logbg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 70%;
     transition: background-image linear .2s;
 
-
     &_sign {
-        background-image: url("images/signbg.jpg");
+        background-image: url("../../../public/images/signbg.jpg");
         background-position-x: 50%;     
     }
 }
