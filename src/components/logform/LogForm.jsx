@@ -7,6 +7,7 @@ import style from "./logoForm.module.scss";
 const initialValueForm = {
   email: "",
   password: "",
+  checkPass: "",
 };
 
 const LogForm = ({ type, isLogged }) => {
@@ -18,7 +19,6 @@ const LogForm = ({ type, isLogged }) => {
   }, [isLogged]);
 
   useEffect(() => {
-    if (logError) console.log(logError.error);
     setTimeout(() => {
       setLogError(null);
     }, 3000);
@@ -36,17 +36,29 @@ const LogForm = ({ type, isLogged }) => {
 
   const handleSubmitLogIn = (e) => {
     e.preventDefault();
-    const { email, password } = formData;
+    const { email, password, checkPass } = formData;
 
     function signValidate() {
-      if (!email || !password)
-        return alert("Debe ingresar un email y una contraseña valida");
-      if (password.length < 6)
-        return alert("La contraseña debe tener al menos 6 caracteres");
+      if (!email || !password || !checkPass) {
+        handleError("blank space");
+        return true;
+      }
+
+      if (password.length < 6) {
+        handleError("characters left");
+        return true;
+      }
+
+      if (checkPass !== password) {
+        handleError("missed password");
+        return true;
+      }
     }
 
     if (type === "Registrarse") {
-      signValidate();
+      const error = signValidate();
+      if (error) return;
+
       singWhitEmail(email, password).catch((error) => handleError(error));
     } else {
       logWhitEmail(email, password).catch((error) => handleError(error));
@@ -57,23 +69,47 @@ const LogForm = ({ type, isLogged }) => {
   //  Manejo de errores de inicio de sesión ***
 
   const handleError = (error) => {
-    if (error.includes("wrong-password"))
+    if (error.includes("wrong-password")) {
       setLogError({
         error,
         errorMessage: "¡Oops! Correo o contraseña inválidos.",
       });
+    }
 
-    if (error.includes("email-already-in-use"))
+    if (error.includes("email-already-in-use")) {
       setLogError({
         error,
         errorMessage: "Ya tenemos un usuario registrado con este mail.",
       });
+    }
 
-    if (error.includes("user-not-found"))
+    if (error.includes("user-not-found")) {
       setLogError({
         error,
         errorMessage: "Mmm... este usuario no está registrado.",
       });
+    }
+
+    if (error === "characters left") {
+      setLogError({
+        error: null,
+        errorMessage: "La contraseña debe tener almenos 6 caracteres.",
+      });
+    }
+
+    if (error === "missed password") {
+      setLogError({
+        error: null,
+        errorMessage: "Las contraseñas no coinciden.",
+      });
+    }
+
+    if (error === "blank space") {
+      setLogError({
+        error: null,
+        errorMessage: "Completa todos los campos.",
+      });
+    }
   };
 
   return (
@@ -97,6 +133,17 @@ const LogForm = ({ type, isLogged }) => {
         placeholder="Contraseña"
         className={style.formContainer__inputs}
       />
+
+      {!isLogged && (
+        <input
+          type="password"
+          name="checkPass"
+          value={formData.checkPass}
+          onChange={(e) => handleChangeForm(e)}
+          placeholder="Repite contraseña"
+          className={style.formContainer__inputs}
+        />
+      )}
 
       {logError && (
         <p className={style.formContainer__errorAdvice}>

@@ -18,8 +18,11 @@ input {
     border-radius: 5px;
     
     &::placeholder {
+        opacity: .7;
         color: variables.$textColor;
+        font-size: .8rem;
         font-weight: 500;
+        font-style: italic;
     }
 
     &:focus-visible {

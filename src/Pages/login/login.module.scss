@@ -5,14 +5,17 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-image: url("https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80");
     align-items: center;
+    background-image: url("images/logbg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    transition: all linear .6s;
+    background-position-y: 70%;
+    transition: background-image linear .2s;
+
 
     &_sign {
-        background-image: url("https://images.unsplash.com/photo-1557682260-96773eb01377?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=829&q=80");
+        background-image: url("images/signbg.jpg");
+        background-position-x: 50%;     
     }
 }
 
@@ -22,7 +25,8 @@
     width: 80%;
     max-width: 550px;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(255, 255, 255, 0.644);
+    backdrop-filter: blur(10px);
     
     @include mixins.for-phone {
      width: 90%;   
@@ -52,8 +56,8 @@
 
 .singUp {
     text-align: end;
-    margin-top: 2rem;
-    font-size: .9rem;
+    margin-top: 3rem;
+    font-size: .8rem;
     &__link {
         font-style: italic;
         cursor: pointer;

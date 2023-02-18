@@ -8,7 +8,7 @@
     &__inputs[type="password"], &__inputs[type="email"] {
         background-image: url("../../../public/icons/arroba.png");
         background-size: cover;
-        background-size: 18px;
+        background-size: 15px;
         background-repeat: no-repeat;
         background-position-y:50%;
         background-position-x: 95%;
@@ -17,6 +17,10 @@
 
     &__inputs[type="password"] {
         background-image: url("../../../public/icons/candado.png");
+    }
+
+    &__inputs[name="checkPass"] {
+        background-image: url("../../../public/icons/check.png");
     }
 
     &__inputs[type="submit"] {
