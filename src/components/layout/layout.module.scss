@@ -2,13 +2,11 @@
 
 .userPanel {
     margin: 0 auto;
-    height: 80px;
     padding: .5rem;
     max-width: 650px;
+    height: 70px;
     position: relative;
-    border-radius: 0 0 15% 15% ;
     background-color: variables.$menuBackground;
-    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.562);
     overflow: hidden;
 }
 
@@ -20,23 +18,21 @@
     &__image {
         width: 50px;
         height: 50px;
-        border: 3px solid variables.$primaryColor;
+        // border: 3px solid variables.$primaryColor;
         border-radius: 50%;
         cursor: pointer;
-        box-shadow: (2px 2px 10px rgba(255, 255, 255, 0.349));
     }
 }
 
 .nameAndMailContainer {
-    width: 90%;
-
+    
     &__name {
-        font-size: 1rem;
+        font-size: .8rem;
         color: variables.$secTextColor;
     }
 
     &__email {
-        font-size: .8rem;
+        font-size: .7rem;
         color: variables.$secTextColor   
     }
 }
@@ -67,7 +63,9 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.2s, opacity .5s linear, height .3s ;
-
+    
+    
+    
     &_visible {
         height: inherit;
         opacity: 1;

@@ -1,0 +1,36 @@
+.projectContainer {
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
+    background-color: #424242;
+    position: relative;
+    overflow: hidden;
+
+    &__image {
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+    }
+
+    &__emoji {
+        position: absolute;
+        top: 45%;
+        left: 5%;
+        transform: translateY(-45%);
+        font-size: 1.3rem;
+    }
+
+}
+
+.nameProject {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    p {
+        font-size: .85rem;
+        font-weight: 600;
+        color: #f7f7f7;
+    }
+}
